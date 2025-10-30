@@ -7,7 +7,7 @@ function DashboardOverview({ exams, categories }) {
   return (
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-gray-800 mb-6">Dashboard Overview</h2>
-      <div className="grid grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-6">
         <div className="bg-linear-to-br from-indigo-500 to-indigo-600 rounded-xl shadow-lg p-6 text-white transform hover:scale-105 transition">
           <div className="flex items-center justify-between mb-2">
             <p className="text-indigo-100 text-sm font-semibold">Total Questions</p>
