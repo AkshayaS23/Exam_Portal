@@ -191,51 +191,48 @@ function Students({ registeredUsers, exams }) {
     <div className="space-y-6">
       <h2 className="text-3xl font-bold text-gray-800 mb-6">Student Performance</h2>
       
-     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <div className="flex items-center justify-between mb-2">
-        <p className="text-sm text-gray-600 font-semibold">Total Students</p>
-        <Users className="w-8 h-8 text-indigo-500" />
+      <div className="grid md:grid-cols-4 grid-cols-2 gap-6">
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-sm text-gray-600 font-semibold">Total Students</p>
+            <Users className="w-8 h-8 text-indigo-500" />
+          </div>
+          <p className="text-3xl font-bold text-gray-800">{registeredUsers.length}</p>
+          <p className="text-xs text-gray-500 mt-1">Registered users</p>
+        </div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-sm text-gray-600 font-semibold">Exams Taken</p>
+            <FileText className="w-8 h-8 text-green-500" />
+          </div>
+          <p className="text-3xl font-bold text-gray-800">{filteredResults.length}</p>
+          <p className="text-xs text-gray-500 mt-1">Total attempts</p>
+        </div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-sm text-gray-600 font-semibold">Avg Score</p>
+            <TrendingUp className="w-8 h-8 text-blue-500" />
+          </div>
+          <p className="text-3xl font-bold text-gray-800">
+            {filteredResults.length > 0 
+              ? (filteredResults.reduce((sum, r) => sum + r.score, 0) / filteredResults.length).toFixed(0) 
+              : 0}%
+          </p>
+          <p className="text-xs text-gray-500 mt-1">Overall average</p>
+        </div>
+        <div className="bg-white rounded-xl shadow-lg p-6">
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-sm text-gray-600 font-semibold">Pass Rate</p>
+            <CheckCircle className="w-8 h-8 text-green-500" />
+          </div>
+          <p className="text-3xl font-bold text-gray-800">
+            {filteredResults.length > 0
+              ? ((filteredResults.filter(r => r.status === 'passed').length / filteredResults.length) * 100).toFixed(0)
+              : 0}%
+          </p>
+          <p className="text-xs text-gray-500 mt-1">Success rate</p>
+        </div>
       </div>
-      <p className="text-3xl font-bold text-gray-800">{registeredUsers.length}</p>
-      <p className="text-xs text-gray-500 mt-1">Registered users</p>
-    </div>
-
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <div className="flex items-center justify-between mb-2">
-        <p className="text-sm text-gray-600 font-semibold">Exams Taken</p>
-        <FileText className="w-8 h-8 text-green-500" />
-      </div>
-      <p className="text-3xl font-bold text-gray-800">{filteredResults.length}</p>
-      <p className="text-xs text-gray-500 mt-1">Total attempts</p>
-    </div>
-
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <div className="flex items-center justify-between mb-2">
-        <p className="text-sm text-gray-600 font-semibold">Avg Score</p>
-        <TrendingUp className="w-8 h-8 text-blue-500" />
-      </div>
-      <p className="text-3xl font-bold text-gray-800">
-        {filteredResults.length > 0 
-          ? (filteredResults.reduce((sum, r) => sum + r.score, 0) / filteredResults.length).toFixed(0) 
-          : 0}%
-      </p>
-      <p className="text-xs text-gray-500 mt-1">Overall average</p>
-    </div>
-
-    <div className="bg-white rounded-xl shadow-lg p-6">
-      <div className="flex items-center justify-between mb-2">
-        <p className="text-sm text-gray-600 font-semibold">Pass Rate</p>
-        <CheckCircle className="w-8 h-8 text-green-500" />
-      </div>
-      <p className="text-3xl font-bold text-gray-800">
-        {filteredResults.length > 0
-          ? ((filteredResults.filter(r => r.status === 'passed').length / filteredResults.length) * 100).toFixed(0)
-          : 0}%
-      </p>
-      <p className="text-xs text-gray-500 mt-1">Success rate</p>
-    </div>
-  </div>
 
       {/* Exam-wise Statistics */}
       <div className="bg-linear-to-r from-purple-500 to-indigo-600 rounded-xl shadow-lg p-6 text-white">

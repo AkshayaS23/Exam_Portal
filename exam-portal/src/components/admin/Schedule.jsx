@@ -4,7 +4,7 @@ function Schedule({ exams }) {
   return (
     <div className="bg-white rounded-xl shadow-lg p-6">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Exam Schedule Calendar</h2>
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid md:grid-cols-7 grid-cols-4 gap-2">
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
           <div key={day} className="text-center font-bold text-gray-700 py-2">{day}</div>
         ))}
